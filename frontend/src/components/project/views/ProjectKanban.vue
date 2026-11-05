@@ -354,8 +354,10 @@ const DRAG_OPTIONS = {
 	dragClass: 'task-dragging',
 	delayOnTouchOnly: true,
 	delay: 1000,
-	// sortable's 30px default sits inside the board's padding, so the board would
-	// barely ever scroll while dragging towards an off-screen bucket
+	// With native drag and drop sortable leaves the innermost scroll container (the board)
+	// to the browser's own drag autoscroll, which does not reliably scroll it sideways.
+	forceAutoScrollFallback: true,
+	// sortable's 30px default sits mostly inside the board's padding
 	scrollSensitivity: 100,
 	scrollSpeed: 20,
 } as const
